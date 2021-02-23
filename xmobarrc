@@ -1,0 +1,49 @@
+Config { font = "xft:hack:pixelsize=13:bold:antialias=true:hinting=true"
+       , additionalFonts = []
+       , borderColor = "black"
+       , border = NoBorder
+       , bgColor = "#1d1d1d"
+       , fgColor = "grey"
+       , alpha = 255
+       , position = Top
+       , textOffset = -1
+       , iconOffset = -1
+       , lowerOnStart = True
+       , pickBroadest = False
+       , persistent = False
+       , hideOnStart = False
+       , iconRoot = "/home/elysium/.xmonad/icons"
+       , allDesktops = True
+       , overrideRedirect = True
+       , commands = [ Run Weather "EGPF" ["-t","<station>: <tempC>C",
+                                          "-L","18","-H","25",
+                                          "--normal","green",
+                                          "--high","red",
+                                          "--low","lightblue"] 36000
+					  
+                    , Run Network "wlp2s0" ["-L","1000",
+					    "-H","5000",
+                                            "--normal","green",
+					    "--high","red",
+					    "-t", "<tx>kb ~ <rx>kb"] 10
+					    
+                    , Run Network "eth1" ["-L","0","-H","32",
+                                          "--normal","green","--high","red", "-t", "<tx>Kb | <rx>Kb"] 10
+					  
+                    , Run Cpu ["-L","3",
+		      	       "-H","50",
+			       "--high","red",
+			       "-t", "[cpu] <total>%"] 10
+			       
+                    , Run Memory ["-t","[mem] <used>M"] 10
+		    
+                    , Run Swap [] 10
+                    , Run Com "uname" ["-s","-r"] "" 36000
+                    , Run Date "%b %_d %H:%M" "date" 10
+		    , Run Battery ["-t", "[<left>%]"] 10
+		    , Run StdinReader
+		    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " <icon=/home/elysium/.xmonad/icons/haskell_02.xpm/> %StdinReader% }{ <fc=#ee9a00>%cpu%</fc> <fc=#4364d9>%memory%</fc> <fc=#33e95b>%wlp2s0%</fc> || <fc=#c8c8c8>%date%</fc> | <fc=#c8c8c8>%battery%</fc> "
+       }
