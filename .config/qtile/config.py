@@ -65,7 +65,7 @@ keys = [
         desc="Spawn a command using a prompt widget"),
     
     # Screenshots
-    Key([mod], "s", lazy.spawn("maim -s -u /home/carlos/screnshots/" + str(round(time.time() * 1000)) + "sc.png"), desc="Screenshot of a selection"),
+    Key([mod], "s", lazy.spawn("maim -s -u /home/carlos/screenshots/" + str(round(time.time() * 1000)) + "sc.png"), desc="Screenshot of a selection"),
 
     # Audio Control (Pulseaudio)
     # Volume
