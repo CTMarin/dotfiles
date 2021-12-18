@@ -101,9 +101,10 @@ for i, group in enumerate(groups):
     ])
 
 layout_conf = {
-    'margin': 20,
-    'border_width': 0,
-    'border_focus': '#eb64fa'
+    'margin': 10,
+    'border_width': 1,
+    #'border_focus': '#eb64fa'
+    'border_focus': '#3B7294'
 }
 
 layouts = [
@@ -133,9 +134,9 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 bar_config = {
-    'background': '#111111',
-    'margin': 5,
-    'opacity': 0.9
+    'background': '#141414',
+    'margin': 10,
+    'opacity': 1
 }
 
 
@@ -168,13 +169,16 @@ def workspaces():
             padding_y=8,
             padding_x=5,
             borderwidth=1,
+            #background=['C71414'],
             rounded=False,
-            highlight_method='block',
+            highlight_method='line',
+            highlight_color=['111111'],
+            block_highlight_text_color=['1482C7'],
             urgent_alert_method='block',
             disable_drag=True
         ),
         separator(),
-        widget.WindowName(fontsize=14, padding=5, max_chars=25),
+        widget.WindowName(fontsize=14, padding=10, max_chars=25),
         separator()
     ]
 
@@ -185,6 +189,14 @@ colors = [  ['#eb64fa'], # 0: first widget
             ['#5e0369'], # 4: fifth widget
             ['#111111'], # 5: bar background
             ['#ffffff']] # 6: font color
+
+colors2 = [ ['#1482C7'], # 0: first widget
+            ['#3B7294'], # 1: second widget
+            ['#01FAD5'], # 2: third widget
+            ['#FB5A3F'], # 3: fourth widget
+            ['#C71414'], # 4: fifth widget
+            ['#111111'], # 5: bar background
+            ['#111111']] # 6: font color
 
 widgets = [
             
@@ -199,22 +211,22 @@ screens = [
                 # CPU
                 widget.TextBox(
                         text = "",
-                        background = colors[5],
-                        foreground = colors[0],
+                        background = colors2[5],
+                        foreground = colors2[0],
                         padding = -4,
                         fontsize = 37
                         ),
                 widget.CPU(
                         format = " {freq_current}GHz {load_percent}% ",
-                        foreground = colors[6],
-                        background = colors[0],
+                        foreground = colors2[6],
+                        background = colors2[0],
                         ),
                 
                 # Battery
                 widget.TextBox(
                     text = '',
-                        background = colors[0],
-                        foreground = colors[1],
+                        background = colors2[0],
+                        foreground = colors2[1],
                         padding = -4,
                         fontsize = 37
                         ),
@@ -225,59 +237,59 @@ screens = [
                         full_char = "",
                         format = "{char} {percent:2.0%} {hour:d}:{min:02d}",
                         update_interval = 2,
-                        foreground = colors[6],
-                        background = colors[1],
+                        foreground = colors2[6],
+                        background = colors2[1],
                         padding = 5
                         ),
                 
                 # Date and Clock
                 widget.TextBox(
                         text = "",
-                        background = colors[1],
-                        foreground = colors[2],
+                        background = colors2[1],
+                        foreground = colors2[2],
                         padding = -4,
                         fontsize = 37
                         ),
                 widget.Clock(
-                        foreground = colors[6],
-                        background = colors[2],
+                        foreground = colors2[6],
+                        background = colors2[2],
                         format = "%d/%m/%Y - %H:%M "
                         ), 
 
                 # Volume and brightness
                 widget.TextBox(
                         text = '',
-                        background = colors[2],
-                        foreground = colors[3],
+                        background = colors2[2],
+                        foreground = colors2[3],
                         padding = -4,
                         fontsize = 37
                         ),
                 widget.TextBox(
                         text = '墳',
-                        background = colors[3],
-                        foreground = colors[6],
+                        background = colors2[3],
+                        foreground = colors2[6],
                         ),
                 widget.PulseVolume(
                         limit_max_volume = True,
                         step = 1,
-                        foreground = colors[6],
-                        background = colors[3],
+                        foreground = colors2[6],
+                        background = colors2[3],
                         padding = 5
                         ),
                 
                 # Shutdown
                 widget.TextBox(
                         text = "",
-                        background = colors[3],
-                        foreground = colors[4],
+                        background = colors2[3],
+                        foreground = colors2[4],
                         padding = -4,
                         fontsize = 37
                         ),
                 widget.QuickExit(
                         default_text = "襤 Shutdown ",
                         countdown_format = "    羽 {}    ",
-                        foreground = colors[6], 
-                        background = colors[4]
+                        foreground = colors2[6], 
+                        background = colors2[4]
                         ) 
             ],
             25, **bar_config
@@ -433,7 +445,6 @@ auto_minimize = True
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
-
 
 
 

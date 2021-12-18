@@ -4,3 +4,4 @@ x-scheme-handler/eclipse+command=_home_carlos_Downloads_papyrus_Papyrus_.desktop
 
 [Added Associations]
 text/plain=nvim.desktop;code_code.desktop;
+application/pdf=brave_brave.desktop;
